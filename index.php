@@ -3,10 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DELPHINE COMPANY LTD </title>
+    <title>delphine company ltd</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="delphine company ltd - leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="delphine company ltd">
+    <meta property="og:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta property="og:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
+    <meta property="og:url" content="https://www.delphinecompanyltd.co.tz">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="delphine company ltd">
+    <meta name="twitter:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta name="twitter:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -197,7 +211,7 @@
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Services</h4>
                 <h1 class="display-5 mb-4">We Provide the Best Services</h1>
-                <p class="mb-0">We specialize in the supply of plumbing hardware, sanitary ware, and electrical fittings. Our products ensure efficient water and electrical systems for your projects.</p>
+                <p class="mb-0">We specialize in the supply of Plumbing hardware, sanitary ware, and electrical fittings. Our products ensure efficient water and electrical systems for your projects.</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">

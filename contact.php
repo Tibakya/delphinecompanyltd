@@ -3,10 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Contact - Delphine Company</title>
+    <title>about us - delphine company ltd</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Delphine Company Ltd - Leading supplier of construction materials in Tanzania" name="keywords">
-    <meta content="Contact Delphine Company Ltd for plumbing hardware, electrical equipment, and general construction supplies in Tanzania." name="description">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="delphine company ltd - leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="delphine company ltd">
+    <meta property="og:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta property="og:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
+    <meta property="og:url" content="https://www.delphinecompanyltd.co.tz">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="delphine company ltd">
+    <meta name="twitter:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta name="twitter:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
