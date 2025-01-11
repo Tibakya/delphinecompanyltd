@@ -73,7 +73,7 @@
                             <p class="mb-5 fs-5">Efficient and reliable water systems, durable sanitary ware or versatile PVC materials,</p>
                             <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-2">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">See More</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="products.php">See More</a>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <p class="mb-5 fs-5">Plumbing materials for clean and Sewage systems to ensure efficient water solutions.</p>
                             <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-2">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">See More</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="products.php">See More</a>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             <p class="mb-5 fs-5">Tunatoa vifaa bora vya mfumo wa maji taka na maji safi kwa miradi yako yote.</p>
                             <div class="d-flex justify-content-center flex-shrink-0 mb-4">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Soma Zaidi</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="products.php">Soma Zaidi</a>
                             </div>
                         </div>
                     </div>

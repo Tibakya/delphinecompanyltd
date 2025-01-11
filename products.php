@@ -146,7 +146,7 @@
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                             <div class="service-item">
                                 <div class="service-img">
-                                    <img src="img/service2/1.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                                    <img src="img/service2/9.jpg" class="img-fluid rounded-top w-100" alt="Image">
                                 </div>
                                 <div class="rounded-bottom p-4">
                                     <a href="#" class="h4 d-inline-block mb-4">Product 9</a>
@@ -226,7 +226,7 @@
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                             <div class="service-item">
                                 <div class="service-img">
-                                    <img src="img/service2/17.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                                    <img src="img/service2/1717.jpg" class="img-fluid rounded-top w-100" alt="Image">
                                 </div>
                                 <div class="rounded-bottom p-4">
                                     <a href="#" class="h4 d-inline-block mb-4">Product 17</a>
