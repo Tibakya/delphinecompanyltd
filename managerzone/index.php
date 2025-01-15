@@ -14,6 +14,7 @@ require 'config/db.php';
 // Pagination settings
 $products_per_page = 10;
 $offers_per_page = 10;
+$latest_per_page = 10;
 
 // Get current page number for products
 $product_page = isset($_GET['product_page']) ? (int)$_GET['product_page'] : 1;
@@ -22,6 +23,10 @@ $product_offset = ($product_page - 1) * $products_per_page;
 // Get current page number for offers
 $offer_page = isset($_GET['offer_page']) ? (int)$_GET['offer_page'] : 1;
 $offer_offset = ($offer_page - 1) * $offers_per_page;
+
+// Get current page number for latest
+$latest_page = isset($_GET['latest_page']) ? (int)$_GET['latest_page'] : 1;
+$latest_offset = ($latest_page - 1) * $latest_per_page;
 
 // Fetch products with pagination
 $product_stmt = $pdo->prepare("SELECT * FROM products LIMIT :limit OFFSET :offset");
@@ -44,6 +49,17 @@ $offers = $offer_stmt->fetchAll();
 // Fetch total number of offers
 $total_offers = $pdo->query("SELECT COUNT(*) FROM offers")->fetchColumn();
 $total_offer_pages = ceil($total_offers / $offers_per_page);
+
+// Fetch latest with pagination
+$latest_stmt = $pdo->prepare("SELECT * FROM about_images LIMIT :limit OFFSET :offset");
+$latest_stmt->bindParam(':limit', $latest_per_page, PDO::PARAM_INT);
+$latest_stmt->bindParam(':offset', $latest_offset, PDO::PARAM_INT);
+$latest_stmt->execute();
+$latest = $latest_stmt->fetchAll();
+
+// Fetch total number of latest
+$total_latest = $pdo->query("SELECT COUNT(*) FROM about_images")->fetchColumn();
+$total_latest_pages = ceil($total_latest / $latest_per_page);
 ?>
 <!doctype html>
 <html lang="en">
@@ -113,8 +129,8 @@ $total_offer_pages = ceil($total_offers / $offers_per_page);
                                     <i class="bi bi-cart-fill"></i>
                                 </span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Orders</span>
-                                    <span class="info-box-number">760</span>
+                                    <span class="info-box-text">Latest</span>
+                                    <span class="info-box-number"><?php echo $total_latest; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -230,6 +246,58 @@ $total_offer_pages = ceil($total_offers / $offers_per_page);
                                     <ul class="pagination pagination-sm m-0 float-end">
                                         <?php for ($i = 1; $i <= $total_offer_pages; $i++): ?>
                                             <li class="page-item <?php if ($i == $offer_page) echo 'active'; ?>"><a class="page-link" href="?offer_page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                        <?php endfor; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card mb-4">
+                                <div class="card-header"><h3 class="card-title">Latest</h3></div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>Image</th>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($latest) > 0): ?>
+                                                    <?php foreach ($latest as $index => $entry): ?>
+                                                    <tr class="align-middle">
+                                                        <td><?php echo $index + 1 + $latest_offset; ?>.</td>
+                                                        <td><img src="uploads/<?php echo $entry['image_path']; ?>" alt="<?php echo $entry['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
+                                                        <td><?php echo $entry['title']; ?></td>
+                                                        <td><?php echo $entry['description']; ?></td>
+                                                        <td>
+                                                            <a href="edit_latest.php?id=<?php echo $entry['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                                                            <form method="POST" action="delete_latest.php" style="display:inline;">
+                                                                <input type="hidden" name="id" value="<?php echo $entry['id']; ?>">
+                                                                <button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">No latest entries available.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-footer clearfix">
+                                    <ul class="pagination pagination-sm m-0 float-end">
+                                        <?php for ($i = 1; $i <= $total_latest_pages; $i++): ?>
+                                            <li class="page-item <?php if ($i == $latest_page) echo 'active'; ?>"><a class="page-link" href="?latest_page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                                         <?php endfor; ?>
                                     </ul>
                                 </div>

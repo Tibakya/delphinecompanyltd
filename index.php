@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>delphine company ltd</title>
+    <title>Delphine Company Ltd</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
     <!-- Meta Tags for SEO -->
-    <meta name="description" content="delphine company ltd - leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta name="description" content="Delphine Company Ltd - Leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
 
     <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="delphine company ltd">
-    <meta property="og:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
-    <meta property="og:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
-    <meta property="og:url" content="https://www.delphinecompanyltd.co.tz">
+    <meta property="og:title" content="Delphine Company Ltd">
+    <meta property="og:description" content="Leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta property="og:image" content="https://www.delphinecompany.co.tz/img/logo.png">
+    <meta property="og:url" content="https://www.delphinecompany.co.tz">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="delphine company ltd">
-    <meta name="twitter:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
-    <meta name="twitter:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
+    <meta name="twitter:title" content="Delphine Company Ltd">
+    <meta name="twitter:description" content="Leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta name="twitter:image" content="https://www.delphinecompany.co.tz/img/logo.png">
 
     <!-- Favicon -->
-    <link rel="icon" href="https://www.delphinecompanyltd.co.tz/img/favicon.png" type="image/png">
-    <link rel="shortcut icon" href="https://www.delphinecompanyltd.co.tz/img/favicon.png" type="image/png">
+    <link rel="icon" href="https://www.delphinecompany.co.tz/img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="https://www.delphinecompany.co.tz/img/favicon.png" type="image/png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +45,17 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
+    <?php
+
+    require 'managerzone/config/db.php';
+// Fetch images for the About section
+$about_images_stmt = $pdo->query("SELECT * FROM about_images");
+$about_images = $about_images_stmt->fetchAll();
+?>
     
+    <!-- Inline Styles -->
     <style>
         .owl-prev, 
         .owl-next {
@@ -129,7 +137,7 @@
                             <h1 class="display-4 text-uppercase text-white mb-5">Wasambazaji wa Vifaa vya Miundo Mbinu ya Maji</h1>
                             <p class="mb-5 fs-5">Tunatoa vifaa bora vya mfumo wa maji taka na maji safi kwa miradi yako yote.</p>
                             <div class="d-flex justify-content-center flex-shrink-0 mb-4">
-                                <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
+                                <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="https://www.instagram.com/lesso_africa_mikocheni?utm_source=qr&igsh=MWQydXhqbzhhcjI3eA=="><i class="fas fa-play-circle me-2"></i> Watch Video</a>
                                 <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="products.php">Soma Zaidi</a>
                             </div>
                         </div>
@@ -140,72 +148,59 @@
     </div>
 </div>
 <!-- Carousel End -->
+</div>
 
-    </div>
-    <!-- Navbar & Hero End -->
+<!-- Navbar & Hero End -->
 
-    <!-- About Start -->
-    <div class="container-fluid about py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div>
-                        <h4 class="text-primary">About Us</h4>
-                        <h1 class="display-5 mb-4">DELPHINE COMPANY LTD</h1>
-                        <p class="mb-4">We are a leading supplier of building materials, specializing in Plumbing hardware, sanitary ware, and electrical fittings. Our mission is to provide high-quality products that ensure efficient water and electrical systems for your projects.</p>
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Plumbing Hardware</h4>
-                                        <p>We supply a wide range of plumbing hardware for both clean and waste water systems.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Electrical Fittings</h4>
-                                        <p>We offer conduit pipes and fittings for efficient electrical systems.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover Now</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex">
-                                    <i class="fas fa-phone-alt fa-2x text-primary me-4"></i>
-                                    <div>
-                                        <h4>Call Us</h4>
-                                        <p class="mb-0 fs-5" style="letter-spacing: 1px;">+255757473177</p>
-                                        <p class="mb-0 fs-5" style="letter-spacing: 1px;">+255759567361</p>
-                                    </div>
-                                </div>
+
+<!-- About Start -->
+<div class="">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="text-primary">About Our Brands</h2>
+            <p>We offer a wide range of high-quality products from leading brands to ensure efficient and reliable systems for your projects.</p>
+        </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="owl-carousel owl-theme">
+                    <?php foreach ($about_images as $image): ?>
+                    <div class="item">
+                        <div class="bg-primary rounded position-relative overflow-hidden">
+                            <img src="<?php echo $image['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute bottom-0 start-0 p-4">
+                                <h4 class="text-white"><?php echo $image['title']; ?></h4>
+                                <p class="text-white"><?php echo $image['description']; ?></p>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-                    <div class="bg-primary rounded position-relative overflow-hidden">
-                        <img src="img/about-2.jpg" class="img-fluid rounded w-100" alt="">
-                        <div class="" style="position: absolute; top: -15px; right: -15px;">
-                            <img src="img/about-3.png" class="img-fluid" style="width: 150px; height: 150px; opacity: 0.7;" alt="">
-                        </div>
-                        <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                            <!-- <img src="img/about-4.jpg" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;" alt=""> -->
-                        </div>
-                        <div class="rounded-bottom">
-                            <img src="img/about-5.jpg" class="img-fluid rounded-bottom w-100" alt="">
+                <div class="mt-3">
+                    <p>Explore our extensive range of plumbing hardware designed for both residential and commercial projects. <a href="products.php" class="text-primary"><i class="fas fa-link"></i> View Products</a></p>
+                </div>
+            </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="owl-carousel owl-theme">
+                    <?php foreach ($about_images as $image): ?>
+                    <div class="item">
+                        <div class="bg-primary rounded position-relative overflow-hidden">
+                            <img src="<?php echo $image['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute bottom-0 start-0 p-4">
+                                <h4 class="text-white"><?php echo $image['title']; ?></h4>
+                                <p class="text-white"><?php echo $image['description']; ?></p>
+                            </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="mt-3">
+                    <p>Discover our premium sanitary ware products that ensure hygiene and durability. <a href="products.php" class="text-primary"><i class="fas fa-link"></i> View Products</a></p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+</div>
+<!-- About End -->
 
     <!-- Services Start -->
     <div class="container-fluid service pb-5">
@@ -576,24 +571,35 @@
 
 
 
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
+<!-- Initialize Owl Carousel -->
+<script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            nav: true,
+            dots: true
+        });
+    });
+</script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 </body>
-
 </html>
