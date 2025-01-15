@@ -7,6 +7,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta property="og:description" content="Learn more about Delphine Company Ltd, a leading supplier of high-quality fittings, pipes, and sanitary wares. Discover our mission, vision, and values.">
+    <meta name="twitter:description" content="Learn more about Delphine Company Ltd, a leading supplier of high-quality fittings, pipes, and sanitary wares. Discover our mission, vision, and values.">
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -11,7 +11,7 @@
 
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="delphine company ltd">
-    <meta property="og:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta property="og:description" content="Get in touch with Delphine Company Ltd for all your plumbing and sanitary ware needs. Our team is ready to assist you with any inquiries or support.">
     <meta property="og:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
     <meta property="og:url" content="https://www.delphinecompanyltd.co.tz">
     <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="delphine company ltd">
-    <meta name="twitter:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
+    <meta name="twitter:description" content="Get in touch with Delphine Company Ltd for all your plumbing and sanitary ware needs. Our team is ready to assist you with any inquiries or support.">
     <meta name="twitter:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
 
     <!-- Google Web Fonts -->

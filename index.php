@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -22,6 +24,10 @@
     <meta name="twitter:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
     <meta name="twitter:image" content="https://www.delphinecompanyltd.co.tz/img/logo.png">
 
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.delphinecompanyltd.co.tz/img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="https://www.delphinecompanyltd.co.tz/img/favicon.png" type="image/png">
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,14 +49,10 @@
     <link href="css/style.css" rel="stylesheet">
     
     <style>
-      
-
-
-    .owl-prev, 
-.owl-next {
-    display: none !important;
-}
-
+        .owl-prev, 
+        .owl-next {
+            display: none !important;
+        }
     </style>
 </head>
 

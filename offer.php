@@ -7,8 +7,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
     <!-- Meta Tags for SEO -->
-    <meta name="description" content="delphine company ltd - leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
-
+    <meta property="og:description" content="Check out the latest offers and discounts from Delphine Company Ltd. Get the best deals on fittings, pipes, and sanitary wares.">
+<meta name="twitter:description" content="Check out the latest offers and discounts from Delphine Company Ltd. Get the best deals on fittings, pipes, and sanitary wares.">
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="delphine company ltd">
     <meta property="og:description" content="leading supplier of fittings, pipes, plumbing, sanitary wares, and sewage systems wares.">
