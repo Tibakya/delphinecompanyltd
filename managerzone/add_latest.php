@@ -8,17 +8,61 @@ if (!isset($_SESSION['admin'])) {
 require 'config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $image_path = '';
+    // For slide1 table
+    $title1 = htmlspecialchars(trim($_POST['title1']));
+    $description1 = htmlspecialchars(trim($_POST['description1']));
+    $image_path1 = '';
 
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $image_path = 'uploads/' . basename($_FILES['image']['name']);
-        move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+    // For slide2 table
+    $title2 = htmlspecialchars(trim($_POST['title2']));
+    $description2 = htmlspecialchars(trim($_POST['description2']));
+    $image_path2 = '';
+
+    // Check if the 'slide1' folder exists, create it if not
+    $upload_dir = 'slide1/';
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
     }
 
-    $stmt = $pdo->prepare("INSERT INTO about_images (title, description, image_path) VALUES (?, ?, ?)");
-    $stmt->execute([$title, $description, $image_path]);
+    // Handle image upload for the first table (slide1)
+    if (isset($_FILES['image1']) && $_FILES['image1']['error'] == 0) {
+        $image1_name = basename($_FILES['image1']['name']);
+        $image_path1 = $upload_dir . $image1_name;
+
+        // Validate file type and size (max 5GB)
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $max_file_size = 5 * 1024 * 1024 * 1024; // 5GB
+
+        if (in_array($_FILES['image1']['type'], $allowed_types) && $_FILES['image1']['size'] <= $max_file_size) {
+            if (!move_uploaded_file($_FILES['image1']['tmp_name'], $image_path1)) {
+                die("Failed to upload image 1. Please try again.");
+            }
+        } else {
+            die("Invalid file type or size for image 1. Only JPEG, PNG, and GIF files under 5GB are allowed.");
+        }
+    }
+
+    // Handle image upload for the second table (slide2)
+    if (isset($_FILES['image2']) && $_FILES['image2']['error'] == 0) {
+        $image2_name = basename($_FILES['image2']['name']);
+        $image_path2 = $upload_dir . $image2_name;
+
+        if (in_array($_FILES['image2']['type'], $allowed_types) && $_FILES['image2']['size'] <= $max_file_size) {
+            if (!move_uploaded_file($_FILES['image2']['tmp_name'], $image_path2)) {
+                die("Failed to upload image 2. Please try again.");
+            }
+        } else {
+            die("Invalid file type or size for image 2. Only JPEG, PNG, and GIF files under 5GB are allowed.");
+        }
+    }
+
+    // Insert data into the slide1 table
+    $stmt1 = $pdo->prepare("INSERT INTO slide1 (title, description, image_path) VALUES (?, ?, ?)");
+    $stmt1->execute([$title1, $description1, $image_path1]);
+
+    // Insert data into the slide2 table
+    $stmt2 = $pdo->prepare("INSERT INTO slide2 (title, description, image_path) VALUES (?, ?, ?)");
+    $stmt2->execute([$title2, $description2, $image_path2]);
 
     header("Location: view_latest.php");
     exit();
@@ -31,20 +75,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Delphine Company</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content=" " />
-    <meta name="author" content="" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" integrity="sha256-tZHrRjVqNSRyWg2wbppGnT833E/Ys0DHWGwT04GiqQg=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="dist/css/adminlte.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" />
+    <style>
+        /* Styling for all input groups */
+        #input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        #input-group .form-group {
+            flex: 1;
+        }
+
+        /* Styling for individual form groups */
+        #title1, #description1, #image1,
+        #title2, #description2, #image2 {
+            width: 100%;
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 768px) {
+            #input-group .form-group {
+                flex: 100%;
+            }
+        }
+    </style>
 </head>
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
 <div class="app-wrapper">
-    <?php include 'includes/header.php' ?>
-    <?php include 'includes/sidebar.php' ?>
+    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/sidebar.php'; ?>
     <main class="app-main">
         <div class="container">
             <h1 class="mt-5">Add Latest</h1>
@@ -57,18 +122,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <div class="card-body">
                             <form action="add_latest.php" method="post" enctype="multipart/form-data">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
+                                <!-- Grouped Fields for the first table (slide1) -->
+                                <div id="input-group">
+                                    <div class="form-group mb-3">
+                                        <label for="title1" class="form-label">Title for Slide 1</label>
+                                        <input type="text" class="form-control" id="title1" name="title1" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description1" class="form-label">Description for Slide 1</label>
+                                        <textarea class="form-control" id="description1" name="description1" required></textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="image1" class="form-label">Image for Slide 1</label>
+                                        <input type="file" class="form-control" id="image1" name="image1" required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control" id="description" name="description" required></textarea>
+
+                                <!-- Grouped Fields for the second table (slide2) -->
+                                <label class="btn btn-warning mb-4">Second Slide Images</label>
+                                <div id="input-group">
+                                    <div class="form-group mb-3">
+                                        <label for="title2" class="form-label">Title for Slide 2</label>
+                                        <input type="text" class="form-control" id="title2" name="title2" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description2" class="form-label">Description for Slide 2</label>
+                                        <textarea class="form-control" id="description2" name="description2" required></textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="image2" class="form-label">Image for Slide 2</label>
+                                        <input type="file" class="form-control" id="image2" name="image2" required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="image" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
-                                </div>
+
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </form>
                         </div>
@@ -77,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </main>
-    <?php include 'includes/footer.php' ?>
+    <?php include 'includes/footer.php'; ?>
 </div>
 </body>
 </html>

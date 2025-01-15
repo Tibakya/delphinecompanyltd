@@ -49,5 +49,8 @@ if (isset($_POST['submit'])) {
         <input type="file" name="image"><br>
         <button type="submit" name="submit">Update Offer</button>
     </form>
+    </main>
+        <?php include 'includes/footer.php' ?>
+    </div>
 </body>
 </html>

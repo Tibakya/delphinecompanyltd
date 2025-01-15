@@ -50,15 +50,26 @@ $offers = $offer_stmt->fetchAll();
 $total_offers = $pdo->query("SELECT COUNT(*) FROM offers")->fetchColumn();
 $total_offer_pages = ceil($total_offers / $offers_per_page);
 
-// Fetch latest with pagination
-$latest_stmt = $pdo->prepare("SELECT * FROM about_images LIMIT :limit OFFSET :offset");
+// Fetch latest entries from both tables using UNION
+$latest_stmt = $pdo->prepare("
+    SELECT id, image_path, title FROM slide1 
+    UNION 
+    SELECT id, image_path, title FROM slide2
+    LIMIT :limit OFFSET :offset
+");
 $latest_stmt->bindParam(':limit', $latest_per_page, PDO::PARAM_INT);
 $latest_stmt->bindParam(':offset', $latest_offset, PDO::PARAM_INT);
 $latest_stmt->execute();
 $latest = $latest_stmt->fetchAll();
 
-// Fetch total number of latest
-$total_latest = $pdo->query("SELECT COUNT(*) FROM about_images")->fetchColumn();
+// Fetch total number of latest entries from both tables using UNION
+$total_latest = $pdo->query("
+    SELECT COUNT(*) FROM ( 
+        SELECT id FROM slide1 
+        UNION 
+        SELECT id FROM slide2
+    ) AS total_latest
+")->fetchColumn();
 $total_latest_pages = ceil($total_latest / $latest_per_page);
 ?>
 <!doctype html>
@@ -168,7 +179,7 @@ $total_latest_pages = ceil($total_latest / $latest_per_page);
                                                     <?php foreach ($products as $index => $product): ?>
                                                     <tr class="align-middle">
                                                         <td><?php echo $index + 1 + $product_offset; ?>.</td>
-                                                        <td><img src="uploads/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" style="width: 50px;"></td>
+                                                        <td><img src="uploads/<?php echo $product['image'] ?: 'default_image.jpg'; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" style="width: 50px;"></td>
                                                         <td><?php echo $product['name']; ?></td>
                                                         <td><?php echo $product['category']; ?></td>
                                                         <td><?php echo $product['price']; ?></td>
@@ -221,7 +232,7 @@ $total_latest_pages = ceil($total_latest / $latest_per_page);
                                                     <?php foreach ($offers as $index => $offer): ?>
                                                     <tr class="align-middle">
                                                         <td><?php echo $index + 1 + $offer_offset; ?>.</td>
-                                                        <td><img src="uploads/<?php echo $offer['image']; ?>" alt="<?php echo $offer['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
+                                                        <td><img src="uploads/<?php echo $offer['image'] ?: 'default_image.jpg'; ?>" alt="<?php echo $offer['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
                                                         <td><?php echo $offer['title']; ?></td>
                                                         <td><?php echo $offer['description']; ?></td>
                                                         <td>
@@ -264,7 +275,6 @@ $total_latest_pages = ceil($total_latest / $latest_per_page);
                                                     <th style="width: 10px">#</th>
                                                     <th>Image</th>
                                                     <th>Title</th>
-                                                    <th>Description</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -273,9 +283,8 @@ $total_latest_pages = ceil($total_latest / $latest_per_page);
                                                     <?php foreach ($latest as $index => $entry): ?>
                                                     <tr class="align-middle">
                                                         <td><?php echo $index + 1 + $latest_offset; ?>.</td>
-                                                        <td><img src="uploads/<?php echo $entry['image_path']; ?>" alt="<?php echo $entry['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
+                                                        <td><img src="<?php echo $entry['image_path'] ?: 'default_image.jpg'; ?>" alt="<?php echo $entry['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
                                                         <td><?php echo $entry['title']; ?></td>
-                                                        <td><?php echo $entry['description']; ?></td>
                                                         <td>
                                                             <a href="edit_latest.php?id=<?php echo $entry['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
                                                             <form method="POST" action="delete_latest.php" style="display:inline;">
@@ -287,7 +296,7 @@ $total_latest_pages = ceil($total_latest / $latest_per_page);
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5" class="text-center">No latest entries available.</td>
+                                                        <td colspan="4" class="text-center">No latest entries available.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

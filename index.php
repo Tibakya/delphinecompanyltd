@@ -50,9 +50,12 @@
     <?php
 
     require 'managerzone/config/db.php';
-// Fetch images for the About section
-$about_images_stmt = $pdo->query("SELECT * FROM about_images");
-$about_images = $about_images_stmt->fetchAll();
+// Fetch images for the slide1
+$slide1_stmt = $pdo->query("SELECT * FROM slide1");
+$slide1 = $slide1_stmt->fetchAll();
+// Fetch images for slide2 
+$slide2_stmt = $pdo->query("SELECT * FROM slide2");
+$slide2 = $slide2_stmt->fetchAll();
 ?>
     
     <!-- Inline Styles -->
@@ -163,10 +166,10 @@ $about_images = $about_images_stmt->fetchAll();
         <div class="row g-5 align-items-center">
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="owl-carousel owl-theme">
-                    <?php foreach ($about_images as $image): ?>
+                    <?php foreach ($slide1 as $image): ?>
                     <div class="item">
                         <div class="bg-primary rounded position-relative overflow-hidden">
-                            <img src="<?php echo $image['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
+                            <img src="managerzone/<?php echo $image['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
                             <div class="position-absolute bottom-0 start-0 p-4">
                                 <h4 class="text-white"><?php echo $image['title']; ?></h4>
                                 <p class="text-white"><?php echo $image['description']; ?></p>
@@ -181,13 +184,13 @@ $about_images = $about_images_stmt->fetchAll();
             </div>
             <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="owl-carousel owl-theme">
-                    <?php foreach ($about_images as $image): ?>
+                    <?php foreach ($slide2 as $image2): ?>
                     <div class="item">
                         <div class="bg-primary rounded position-relative overflow-hidden">
-                            <img src="<?php echo $image['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
+                            <img src="managerzone/<?php echo $image2['image_path']; ?>" class="img-fluid rounded w-100" alt="" style="height: 400px; object-fit: cover;">
                             <div class="position-absolute bottom-0 start-0 p-4">
-                                <h4 class="text-white"><?php echo $image['title']; ?></h4>
-                                <p class="text-white"><?php echo $image['description']; ?></p>
+                                <h4 class="text-white"><?php echo $image2['title']; ?></h4>
+                                <p class="text-white"><?php echo $image2['description']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -441,125 +444,7 @@ $about_images = $about_images_stmt->fetchAll();
 <!-- Team End -->
 
 <!-- Testimonial Start -->
-<div class="container-fluid testimonial pb-5">
-    <div class="container pb-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-            <h4 class="text-primary">Testimonial</h4>
-            <h1 class="display-5 mb-4">What Our Clients Say</h1>
-            <p class="mb-0">At Delphine Company Ltd, we value our clients’ feedback. Here’s what some of them have to say about our services!</p>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="img/testimonial-1.jpeg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">"Delphine Company Ltd has been an incredible partner in providing high-quality construction materials. Their timely delivery and exceptional customer service are unmatched." </p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">David James</h4>
-                        <p class="mb-0">Founder, Lesso Africa</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="img/testimonial-2.jpeg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">"The products we received from Delphine were of outstanding quality and their support team was always ready to assist with any queries. Highly recommended!"</p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Alice Ken</h4>
-                        <p class="mb-0">Manager, Native Technology</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="img/testimonial-3.jpeg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">"Delphine's inventory management system made a huge difference in how we track and manage our supplies. Their solutions are simple, effective, and tailored to our needs."</p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Emma Williams</h4>
-                        <p class="mb-0">Operations Manager, XYZ Corp</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="img/testimonial-3.jpeg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">"Working with Delphine Company Ltd has been a fantastic experience. Their products are top-tier, and their customer service is second to none. We look forward to future collaborations!"</p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Michael Smith</h4>
-                        <p class="mb-0">CEO, Global Traders</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include 'include/testimonies.php'; ?>
 <!-- Testimonial End -->
 <!-- Footer Start -->
 <?php include 'include/footer.php'; ?>
