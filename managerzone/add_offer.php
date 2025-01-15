@@ -8,21 +8,19 @@ if (!isset($_SESSION['admin'])) {
 require 'config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $product_name = $_POST['product_name'];
-    $product_description = $_POST['product_description'];
-    $product_price = $_POST['product_price'];
-    $product_category = $_POST['product_category'];
+    $offer_title = $_POST['offer_title'];
+    $offer_description = $_POST['offer_description'];
     $image = $_FILES['image']['name'];
     $image_tmp = $_FILES['image']['tmp_name'];
 
     move_uploaded_file($image_tmp, "uploads/$image");
 
-    $query = "INSERT INTO products (name, description, price, category, image) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO offers (title, description, image) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($query);
-    if ($stmt->execute([$product_name, $product_description, $product_price, $product_category, $image])) {
-        echo "<script>alert('Product added successfully!'); window.location.href='view_products.php';</script>";
+    if ($stmt->execute([$offer_title, $offer_description, $image])) {
+        echo "<script>alert('Offer added successfully!'); window.location.href='view_offers.php';</script>";
     } else {
-        echo "<script>alert('Error adding product.');</script>";
+        echo "<script>alert('Error adding offer.');</script>";
     }
 }
 ?>
@@ -51,28 +49,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-md-8">
                 <div class="card card-primary card-outline mb-4">
                     <div class="card-header">
-                        <div class="card-title">Add New Product</div>
-                        <a href="view_products.php"><button type="button" class="btn btn-primary float-end">View Products</button></a>
+                        <div class="card-title">Add New Offer</div>
+                        <a href="view_offers.php"><button type="button" class="btn btn-primary float-end">View Offers</button></a>
                     </div>
                     <form method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name" required>
+                                <label for="offer_title" class="form-label">Offer Title</label>
+                                <input type="text" class="form-control" id="offer_title" name="offer_title" required>
                             </div>
                             <div class="mb-3">
-                                <label for="product_category" class="form-label">Category</label>
-                                <input type="text" class="form-control" id="product_category" name="product_category" required>
+                                <label for="offer_description" class="form-label">Description</label>
+                                <textarea class="form-control" id="offer_description" name="offer_description" rows="3" required></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="product_description" class="form-label">Description</label>
-                                <textarea class="form-control" id="product_description" name="product_description" rows="3" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_price" class="form-label">Price</label>
-                                <input type="number" class="form-control" id="product_price" name="product_price" required>
-                            </div>
-                            <label for="imageUpload" class="form-label">Upload Product Picture</label>
+                            <label for="imageUpload" class="form-label">Upload Offer Picture</label>
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control" id="inputGroupFile02" name="image" required>
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>

@@ -22,6 +22,6 @@
             </div>
             <a href="contact.php" class="nav-item nav-link">Contact Us</a>
         </div>
-        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Shop with Us</a>
+        <a href="contact.php" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Shop with Us</a>
     </div>
 </nav>

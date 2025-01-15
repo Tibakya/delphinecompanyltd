@@ -222,7 +222,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Plumbing Hardware</a>
                             <p class="mb-4">We supply a wide range of plumbing hardware for both clean and waste water systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Sanitary Ware</a>
                             <p class="mb-4">We offer a variety of sanitary ware products to ensure clean and efficient water systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Electrical Fittings</a>
                             <p class="mb-4">We provide conduit pipes and fittings for efficient electrical systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>
@@ -258,7 +258,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Plumbing Hardware</a>
                             <p class="mb-4">We supply a wide range of plumbing hardware for both clean and waste water systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>
@@ -270,7 +270,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Sanitary Ware</a>
                             <p class="mb-4">We offer a variety of sanitary ware products to ensure clean and efficient water systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Electrical Fittings</a>
                             <p class="mb-4">We provide conduit pipes and fittings for efficient electrical systems.</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products">See More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="products.php">See More</a>
                         </div>
                     </div>
                 </div>

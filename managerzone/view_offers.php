@@ -8,20 +8,20 @@ if (!isset($_SESSION['admin'])) {
 require 'config/db.php';
 
 // Pagination settings
-$products_per_page = 10;
-$product_page = isset($_GET['product_page']) ? (int)$_GET['product_page'] : 1;
-$product_offset = ($product_page - 1) * $products_per_page;
+$offers_per_page = 10;
+$offer_page = isset($_GET['offer_page']) ? (int)$_GET['offer_page'] : 1;
+$offer_offset = ($offer_page - 1) * $offers_per_page;
 
-// Fetch products with pagination
-$product_stmt = $pdo->prepare("SELECT * FROM products LIMIT :limit OFFSET :offset");
-$product_stmt->bindParam(':limit', $products_per_page, PDO::PARAM_INT);
-$product_stmt->bindParam(':offset', $product_offset, PDO::PARAM_INT);
-$product_stmt->execute();
-$products = $product_stmt->fetchAll();
+// Fetch offers with pagination
+$offer_stmt = $pdo->prepare("SELECT * FROM offers LIMIT :limit OFFSET :offset");
+$offer_stmt->bindParam(':limit', $offers_per_page, PDO::PARAM_INT);
+$offer_stmt->bindParam(':offset', $offer_offset, PDO::PARAM_INT);
+$offer_stmt->execute();
+$offers = $offer_stmt->fetchAll();
 
-// Fetch total number of products
-$total_products = $pdo->query("SELECT COUNT(*) FROM products")->fetchColumn();
-$total_product_pages = ceil($total_products / $products_per_page);
+// Fetch total number of offers
+$total_offers = $pdo->query("SELECT COUNT(*) FROM offers")->fetchColumn();
+$total_offer_pages = ceil($total_offers / $offers_per_page);
 ?>
 
 <!doctype html>
@@ -46,13 +46,13 @@ $total_product_pages = ceil($total_products / $products_per_page);
     <?php include 'includes/sidebar.php' ?>
     <main class="app-main">
         <div class="container">
-            <h1 class="mt-5">Available Products</h1>
+            <h1 class="mt-5">Available Offers</h1>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="card-title">Products</h3>
-                            <a href="add_product.php"><button type="button" class="btn btn-primary float-end">Add Product</button></a>
+                            <h3 class="card-title">Offers</h3>
+                            <a href="add_offer.php"><button type="button" class="btn btn-primary float-end">Add Offer</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -61,25 +61,23 @@ $total_product_pages = ceil($total_products / $products_per_page);
                                         <tr>
                                             <th style="width: 10px">#</th>
                                             <th>Image</th>
-                                            <th>Product Name</th>
-                                            <th>Category</th>
-                                            <th>Price</th>
+                                            <th>Offer Title</th>
+                                            <th>Description</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (count($products) > 0): ?>
-                                            <?php foreach ($products as $index => $product): ?>
+                                        <?php if (count($offers) > 0): ?>
+                                            <?php foreach ($offers as $index => $offer): ?>
                                             <tr class="align-middle">
-                                                <td><?php echo $index + 1 + $product_offset; ?>.</td>
-                                                <td><img src="uploads/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" style="width: 50px;"></td>
-                                                <td><?php echo $product['name']; ?></td>
-                                                <td><?php echo $product['category']; ?></td>
-                                                <td><?php echo $product['price']; ?></td>
+                                                <td><?php echo $index + 1 + $offer_offset; ?>.</td>
+                                                <td><img src="uploads/<?php echo $offer['image']; ?>" alt="<?php echo $offer['title']; ?>" class="img-thumbnail" style="width: 50px;"></td>
+                                                <td><?php echo $offer['title']; ?></td>
+                                                <td><?php echo $offer['description']; ?></td>
                                                 <td>
-                                                    <a href="edit_product.php?id=<?php echo $product['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                                                    <form method="POST" action="delete_product.php" style="display:inline;">
-                                                        <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                                                    <a href="edit_offer.php?id=<?php echo $offer['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                                                    <form method="POST" action="delete_offer.php" style="display:inline;">
+                                                        <input type="hidden" name="id" value="<?php echo $offer['id']; ?>">
                                                         <button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                 </td>
@@ -87,7 +85,7 @@ $total_product_pages = ceil($total_products / $products_per_page);
                                             <?php endforeach; ?>
                                         <?php else: ?>
                                             <tr>
-                                                <td colspan="6" class="text-center">No products available.</td>
+                                                <td colspan="5" class="text-center">No offers available.</td>
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>
@@ -96,8 +94,8 @@ $total_product_pages = ceil($total_products / $products_per_page);
                         </div>
                         <div class="card-footer clearfix">
                             <ul class="pagination pagination-sm m-0 float-end">
-                                <?php for ($i = 1; $i <= $total_product_pages; $i++): ?>
-                                    <li class="page-item <?php if ($i == $product_page) echo 'active'; ?>"><a class="page-link" href="?product_page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php for ($i = 1; $i <= $total_offer_pages; $i++): ?>
+                                    <li class="page-item <?php if ($i == $offer_page) echo 'active'; ?>"><a class="page-link" href="?offer_page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                                 <?php endfor; ?>
                             </ul>
                         </div>

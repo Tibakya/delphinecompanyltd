@@ -72,13 +72,13 @@
                 <ul class="nav nav-treeview">
                
                   <li class="nav-item">
-                    <a href="./layout/fixed-sidebar.html" class="nav-link">
+                    <a href="add_offer.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Add Offer</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./layout/layout-custom-area.html" class="nav-link">
+                    <a href="view_offers.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>View Offers</small></p>
                     </a>
